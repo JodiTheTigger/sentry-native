@@ -22,10 +22,17 @@ sentry_options_new(void)
     // we assume the DSN to be ASCII only
     sentry_options_set_dsn(opts, getenv("SENTRY_DSN"));
     const char *debug = getenv("SENTRY_DEBUG");
+    const char *debug_transport = getenv("SENTRY_DEBUG_TRANSPORT");
     opts->debug = debug && sentry__string_eq(debug, "1");
+    opts->debug_transport
+        = debug_transport && sentry__string_eq(debug_transport, "1");
 #if !defined(NDEBUG)
     if (!opts->debug && (!debug || !sentry__string_eq(debug, "0"))) {
         opts->debug = 1;
+    }
+    if (!opts->debug_transport
+        && (!debug_transport || !sentry__string_eq(debug_transport, "0"))) {
+        opts->debug_transport = 1;
     }
 #endif
     sentry_logger_t logger
@@ -404,6 +411,18 @@ int
 sentry_options_get_debug(const sentry_options_t *opts)
 {
     return opts->debug;
+}
+
+void
+sentry_options_set_debug_transport(sentry_options_t *opts, int debug_transport)
+{
+    opts->debug_transport = !!debug_transport;
+}
+
+int
+sentry_options_get_debug_transport(const sentry_options_t *opts)
+{
+    return opts->debug_transport;
 }
 
 void

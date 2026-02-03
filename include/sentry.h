@@ -1277,6 +1277,18 @@ SENTRY_API void sentry_options_set_debug(sentry_options_t *opts, int debug);
 SENTRY_API int sentry_options_get_debug(const sentry_options_t *opts);
 
 /**
+ * Enables or disables debug printing mode for transports only. Debug must be
+ * enabled for this to have an effect.
+ */
+SENTRY_API void sentry_options_set_debug_transport(
+    sentry_options_t *opts, int debug);
+
+/**
+ * Returns the current value of the debug_transport flag.
+ */
+SENTRY_API int sentry_options_get_debug_transport(const sentry_options_t *opts);
+
+/**
  * Sets the level of the logger. Has no effect if `debug` is not set to true.
  */
 SENTRY_API void sentry_options_set_logger_level(

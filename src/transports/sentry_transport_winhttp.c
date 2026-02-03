@@ -97,7 +97,7 @@ sentry__winhttp_transport_start(
 
     state->dsn = sentry__dsn_incref(opts->dsn);
     state->user_agent = sentry__string_to_wstr(opts->user_agent);
-    state->debug = opts->debug;
+    state->debug = opts->debug && opts->debug_transport;
 
     sentry__bgworker_setname(bgworker, opts->transport_thread_name);
 

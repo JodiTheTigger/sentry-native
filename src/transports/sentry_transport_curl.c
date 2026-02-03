@@ -117,7 +117,7 @@ sentry__curl_transport_start(
     state->user_agent = sentry__string_clone(options->user_agent);
     state->ca_certs = sentry__string_clone(options->ca_certs);
     state->curl_handle = curl_easy_init();
-    state->debug = options->debug;
+    state->debug = options->debug && options->debug_transport;
 
     sentry__bgworker_setname(bgworker, options->transport_thread_name);
 

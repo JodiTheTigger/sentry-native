@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+**Features**:
+
+- Add `debug_transport` option so that transport logging can be disabled even if `debug` is enabled ([#555](https://github.com/getsentry/sentry-native/issues/555))
+
 ## 0.12.5
 
 **Features**:

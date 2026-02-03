@@ -36,6 +36,7 @@ struct sentry_options_s {
     sentry_logger_t logger;
     size_t max_breadcrumbs;
     bool debug;
+    bool debug_transport;
     bool auto_session_tracking;
     bool require_user_consent;
     bool symbolize_stacktraces;
